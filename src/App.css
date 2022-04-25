@@ -25,3 +25,12 @@ button {
   border-radius: 5px;
   text-align: center;
 }
+.completed {
+  text-decoration: line-through;
+}
+
+ul li {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}

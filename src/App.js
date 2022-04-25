@@ -15,6 +15,7 @@ function App() {
       completed: true,
     },
   ]);
+
   return (
     <div className="App">
       <form>
@@ -23,7 +24,9 @@ function App() {
         <button>Add task</button>
       </form>
       <ul>
-        <ListItem />
+        {tasks.map((task) => (
+          <ListItem {...task} />
+        ))}
       </ul>
     </div>
   );

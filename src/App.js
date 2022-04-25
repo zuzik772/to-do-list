@@ -14,6 +14,21 @@ function App() {
       task: "clean the house",
       completed: true,
     },
+    {
+      id: 3,
+      task: "study react",
+      completed: false,
+    },
+    {
+      id: 4,
+      task: "go bouldering",
+      completed: false,
+    },
+    {
+      id: 5,
+      task: "be friends with Agatka",
+      completed: true,
+    },
   ]);
   function deleteItem(id) {
     setTasks((oldState) => oldState.filter((item) => item.id !== id));

@@ -33,12 +33,22 @@ function App() {
   function deleteItem(id) {
     setTasks((oldState) => oldState.filter((item) => item.id !== id));
   }
-
+  function submit(e) {
+    e.preventDefault();
+    // console.log(e); //form
+    // console.log(e.target.elements.name.value);
+    const newTask = {
+      id: Math.random(),
+      task: e.target.elements.name.value,
+      completed: false,
+    };
+    setTasks((oldState) => oldState.concat(newTask));
+  }
   return (
     <div className="App">
-      <form>
+      <form onSubmit={submit}>
         <label htmlFor="name">Task</label>
-        <input type="text" id="name" name="task" />
+        <input required type="text" id="name" name="task" />
         <button>Add task</button>
       </form>
       <ul>

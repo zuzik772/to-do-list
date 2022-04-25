@@ -33,6 +33,18 @@ function App() {
   function deleteItem(id) {
     setTasks((oldState) => oldState.filter((item) => item.id !== id));
   }
+  function toggleCompletion(id) {
+    setTasks((oldState) => {
+      return oldState.map((item) => {
+        if (id === item.id) {
+          const newItem = { ...item };
+          newItem.completed = !newItem.completed;
+          return newItem;
+        }
+        return item;
+      });
+    });
+  }
   function submit(e) {
     e.preventDefault();
     // console.log(e); //form
@@ -53,7 +65,7 @@ function App() {
       </form>
       <ul>
         {tasks.map((task) => (
-          <ListItem deleteItem={deleteItem} {...task} />
+          <ListItem toggleCompletion={toggleCompletion} deleteItem={deleteItem} {...task} />
         ))}
       </ul>
     </div>

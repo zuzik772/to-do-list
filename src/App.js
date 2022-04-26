@@ -30,6 +30,7 @@ function App() {
       completed: true,
     },
   ]);
+  const [showCompleted, setShowCompleted] = useState(true);
   function deleteItem(id) {
     setTasks((oldState) => oldState.filter((item) => item.id !== id));
   }
@@ -45,6 +46,11 @@ function App() {
       });
     });
   }
+  let all = tasks;
+  if (!showCompleted) {
+    all = tasks.filter((item) => item.completed === false);
+  }
+
   function submit(e) {
     e.preventDefault();
     // console.log(e); //form
@@ -58,13 +64,20 @@ function App() {
   }
   return (
     <div className="App">
+      <button
+        onClick={() => {
+          setShowCompleted((oldState) => !oldState);
+        }}
+      >
+        Show
+      </button>
       <form onSubmit={submit}>
         <label htmlFor="name">Task</label>
         <input required type="text" id="name" name="task" />
         <button>Add task</button>
       </form>
       <ul>
-        {tasks.map((task) => (
+        {all.map((task) => (
           <ListItem toggleCompletion={toggleCompletion} deleteItem={deleteItem} {...task} />
         ))}
       </ul>

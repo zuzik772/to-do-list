@@ -34,3 +34,10 @@ ul li {
   grid-template-columns: 1fr 1fr 1fr;
   gap: 1rem;
 }
+
+button:hover {
+  background-color: rgb(143, 143, 227);
+}
+button:disabled {
+  background-color: rgb(244, 183, 213);
+}
